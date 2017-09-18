@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ModalController  } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { AddCountry } from '../add-country/add-country';
 
 /**
  * Generated class for the ListPhotoPage page.
@@ -17,7 +18,7 @@ import { Storage } from '@ionic/storage';
 export class ListPhotoPage {
   Countrys:String [];
   Hotels:Array<{Id: string, Country: string, Name: string, Photo: string}>;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public storage: Storage,public addcountry: AddCountry) {
     //this.Countrys = ['Египет','Украина'];
     //this.storage.set('Countrys', this.Countrys);
     this.storage.get('Countrys').then((val)=>{
@@ -47,6 +48,8 @@ export class ListPhotoPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListPhotoPage');
+    let modal = this.modalCtrl.create(this.addcountry);
+    modal.present();
   }
 
 }
