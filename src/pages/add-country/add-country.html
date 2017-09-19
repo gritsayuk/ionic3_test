@@ -8,7 +8,7 @@
 
 <ion-content>
     <ion-item>
-      <ion-input type="text" placeholder="Страна"></ion-input>
+      <ion-input type="text" placeholder="Страна" [value]="NewCountry" [(ngModel)]="NewCountry"></ion-input>
     </ion-item>
   <div padding>
     <button ion-button outline item-end (click)=AddCountry()>

@@ -1,14 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ModalController  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ModalController,Modal  } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { AddCountryPage } from '../add-country/add-country';
 
-/**
- * Generated class for the ListPhotoPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -24,25 +18,7 @@ export class ListPhotoPage {
     this.storage.get('Countrys').then((val)=>{
       this.Countrys = val;
     })
-    /*this.Hotels = [];
-    this.Hotels.push({
-      Id:'1',
-      Country: 'Египет',
-      Name: 'Придорожный',
-      Photo: '\\qq'
-    });
-    this.Hotels.push({
-      Id:'1',
-      Country: 'Египет',
-      Name: 'Придорожный1',
-      Photo: '\\qq1'
-    });
-    this.Hotels.push({
-      Id:'1',
-      Country: 'Украина',
-      Name: 'Semena',
-      Photo: '\\qq'
-    });*/
+
 
   }
 
@@ -50,8 +26,11 @@ export class ListPhotoPage {
     alert(item);
   }
   addCountry(){
-    let modal = this.modalCtrl.create(AddCountryPage);
+    let modal: Modal = this.modalCtrl.create(AddCountryPage);
+    //Откріваем модальное окно
     modal.present();
+    //получаем список стран из модального окна
+    modal.onDidDismiss((data)=>{this.Countrys =data;})
  }
 
 }

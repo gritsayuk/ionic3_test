@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-
+//import { ListPhotoPage } from '../list-photo/list-photo';
 /**
  * Generated class for the AddCountryPage page.
  *
@@ -16,18 +16,19 @@ import { Storage } from '@ionic/storage';
 })
 export class AddCountryPage {
   Countrys:String [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
+  NewCountry:String;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, private view:ViewController) {
   }
 
   CloseModal() {
-    this.navCtrl.pop();
+    this.view.dismiss();
   }
   AddCountry() {
     this.storage.get('Countrys').then((val)=>{
       this.Countrys=val;
-      this.Countrys.push('Пока');
+      this.Countrys.push(this.NewCountry);
       this.storage.set('Countrys', this.Countrys);
+      this.view.dismiss(this.Countrys);
     });
-    this.navCtrl.pop();
   }
 }
