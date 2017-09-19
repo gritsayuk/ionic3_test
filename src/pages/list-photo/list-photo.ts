@@ -53,4 +53,5 @@ export class ListPhotoPage {
     let modal = this.modalCtrl.create(AddCountryPage);
     modal.present();
  }
+
 }

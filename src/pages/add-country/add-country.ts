@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the AddCountryPage page.
@@ -14,12 +15,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'add-country.html',
 })
 export class AddCountryPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  Countrys:String [];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddCountryPage');
+  CloseModal() {
+    this.navCtrl.pop();
   }
-
+  AddCountry() {
+    this.storage.get('Countrys').then((val)=>{
+      this.Countrys=val;
+      this.Countrys.push('Пока');
+      this.storage.set('Countrys', this.Countrys);
+    });
+    this.navCtrl.pop();
+  }
 }
