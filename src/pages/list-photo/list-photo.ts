@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ModalController,Modal  } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { AddCountryPage } from '../add-country/add-country';
+import {ListHotelPage} from '../list-hotel/list-hotel'
 
 
 @IonicPage()
@@ -23,7 +24,7 @@ export class ListPhotoPage {
   }
 
   itemSelected(item) {
-    alert(item);
+    this.navCtrl.push(ListHotelPage);
   }
   addCountry(){
     let modal: Modal = this.modalCtrl.create(AddCountryPage);

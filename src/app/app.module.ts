@@ -7,7 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { ListPhotoPage } from '../pages/list-photo/list-photo';
 import { AddCountryPage } from '../pages/add-country/add-country';
-
+import { ListHotelPage } from '../pages/list-hotel/list-hotel';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -19,7 +19,8 @@ import { IonicStorageModule } from '@ionic/storage';
     HomePage,
     ListPage,
 	  ListPhotoPage,
-    AddCountryPage
+    AddCountryPage,
+    ListHotelPage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +33,8 @@ import { IonicStorageModule } from '@ionic/storage';
     HomePage,
     ListPage,
 	  ListPhotoPage,
-    AddCountryPage
+    AddCountryPage,
+    ListHotelPage
   ],
   providers: [
     StatusBar,
