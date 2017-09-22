@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
+import { File } from '@ionic-native/file';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the AddHotelPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -14,8 +8,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'add-hotel.html',
 })
 export class AddHotelPage {
+  ThisDir : any;
+  constructor(public navCtrl: NavController, public navParams: NavParams,private file: File) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    //ythis.ThisDir ='+++'||this.file.dataDirectory()||'---';
+
   }
 
   ionViewDidLoad() {

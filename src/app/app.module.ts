@@ -12,6 +12,8 @@ import { AddHotelPage } from '../pages/add-hotel/add-hotel';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { File } from '@ionic-native/file';
+
 import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
@@ -42,6 +44,7 @@ import { IonicStorageModule } from '@ionic/storage';
   providers: [
     StatusBar,
     SplashScreen,
+    File,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
