@@ -12,7 +12,8 @@ export class AddHotelPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,private file: File) {
 
 
-    //ythis.ThisDir ='+++'||this.file.dataDirectory()||'---';
+    this.ThisDir = this.file.applicationDirectory;
+    this.ThisDir = this.file.listDir('////', 'android_asset');
 
   }
 

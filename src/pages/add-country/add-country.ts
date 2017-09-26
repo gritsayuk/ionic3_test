@@ -24,11 +24,19 @@ export class AddCountryPage {
     this.view.dismiss();
   }
   AddCountry() {
-    this.storage.get('Countrys').then((val)=>{
-      this.Countrys=val;
+    this.storage.get('Countrys').then((val)=> {
+      try{
+      this.Countrys = val;
+        if(!this.Countrys) {
+          this.Countrys = [];
+          }
       this.Countrys.push(this.NewCountry);
       this.storage.set('Countrys', this.Countrys);
       this.view.dismiss(this.Countrys);
+      }
+      catch(e){alert(e.toString());}
+
+
     });
   }
 }
