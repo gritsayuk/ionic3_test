@@ -8,11 +8,21 @@
 
   <ion-navbar>
     <ion-title>AddHotel</ion-title>
+    <ion-buttons end>
+      <button ion-button clear icon-only (click)=PreFolder() >
+        <ion-icon name='add' is-active="false" ></ion-icon>
+      </button>
+    </ion-buttons>
+
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-{{ThisDir}}
+  <ion-list>
+    <button ion-item *ngFor="let item of ThisDirs" (click)="itemSelected(item)">
+      {{ item.name }}
+    </button>
+  </ion-list>
 </ion-content>

@@ -20,8 +20,14 @@ export class AddCountryPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, private view:ViewController) {
   }
 
-  CloseModal() {
-    this.view.dismiss();
+  CloseModal() { this.storage.get('Countrys').then((val)=> {
+    this.storage.get('Countrys').then((val)=> {
+    try{
+      this.view.dismiss(val);
+    }
+    catch(e){alert(e.toString());}
+    });
+  });
   }
   AddCountry() {
     this.storage.get('Countrys').then((val)=> {

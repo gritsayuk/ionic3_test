@@ -18,8 +18,8 @@ import {AddHotelPage} from '../add-hotel/add-hotel'
 export class ListHotelPage {
   ListPhoto:String [];
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public modalCtrl: ModalController) {
-    this.ListPhoto = ['Египет','Украина'];
-    this.storage.set('ListPhoto', this.ListPhoto);
+    //this.ListPhoto = ['Египет','Украина'];
+    //this.storage.set('ListPhoto', this.ListPhoto);
     this.storage.get('ListPhoto').then((val)=>{
       this.ListPhoto = val;
     })
@@ -29,7 +29,7 @@ export class ListHotelPage {
     //Откріваем модальное окно
     modal.present();
     //получаем список стран из модального окна
-    //modal.onDidDismiss((data)=>{this.Countrys =data;})
+    modal.onDidDismiss((data)=>{this.ListPhoto =data;})
   }
   itemSelected() {
     console.log('addPhoto()');
