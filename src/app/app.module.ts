@@ -4,10 +4,12 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
-import { ListPhotoPage } from '../pages/list-photo/list-photo';
+import { ListCountrysPage } from '../pages/list-countrys/list-countrys';
 import { AddCountryPage } from '../pages/add-country/add-country';
+
 import { ListHotelPage } from '../pages/list-hotel/list-hotel';
+
+import { ListPhotosPage } from '../pages/list-photos/list-photos';
 import { AddHotelPage } from '../pages/add-hotel/add-hotel';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -20,10 +22,10 @@ import { IonicStorageModule } from '@ionic/storage';
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
-	  ListPhotoPage,
+	  ListCountrysPage,
     AddCountryPage,
     ListHotelPage,
+    ListPhotosPage,
     AddHotelPage
   ],
   imports: [
@@ -35,10 +37,10 @@ import { IonicStorageModule } from '@ionic/storage';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
-	  ListPhotoPage,
+	  ListCountrysPage,
     AddCountryPage,
     ListHotelPage,
+    ListPhotosPage,
     AddHotelPage
   ],
   providers: [

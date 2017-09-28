@@ -9,7 +9,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
+    <ion-title>Страны</ion-title>
     <ion-buttons end>
       <button ion-button clear icon-only (click)=addCountry() >
         <ion-icon name='add' is-active="false" ></ion-icon>
@@ -22,9 +22,13 @@
 
 <ion-content padding>
   <ion-list>
-
-    <button ion-item *ngFor="let item of Countrys" (click)="itemSelected(item)">
-      {{ item }}
-    </button>
+      <div ion-item *ngFor="let item of Countrys">
+        <button  (click)="itemSelected(item)" icon-left>
+          {{ item }}
+        </button>
+        <button (click)="itemTrash(item)">
+          <ion-icon name='trash' is-active="false" ></ion-icon>
+        </button>
+      </div>
   </ion-list>
 </ion-content>

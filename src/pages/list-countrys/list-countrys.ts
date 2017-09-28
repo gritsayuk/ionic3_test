@@ -2,15 +2,16 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ModalController,Modal  } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { AddCountryPage } from '../add-country/add-country';
-import {ListHotelPage} from '../list-hotel/list-hotel'
+import {ListPhotosPage} from '../list-photos/list-photos'
+import { ListHotelPage } from '../pages/list-hotel/list-hotel';
 
 
 @IonicPage()
 @Component({
   selector: 'page-list-photo',
-  templateUrl: 'list-photo.html',
+  templateUrl: 'list-countrys.html',
 })
-export class ListPhotoPage {
+export class ListCountrysPage {
   Countrys:String [];
   Hotels:Array<{Id: string, Country: string, Name: string, Photo: string}>;
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public storage: Storage) {
@@ -24,6 +25,7 @@ export class ListPhotoPage {
   }
 
   itemSelected(item) {
+    //this.navCtrl.push(ListPhotosPage);
     this.navCtrl.push(ListHotelPage);
   }
   addCountry(){
@@ -33,5 +35,11 @@ export class ListPhotoPage {
     //получаем список стран из модального окна
     modal.onDidDismiss((data)=>{this.Countrys =data;})
  }
-
+  itemTrash(item){
+    const index: number = this.Countrys.indexOf(item);
+    if (index !== -1) {
+      this.Countrys.splice(index, 1);
+      this.storage.set('Countrys', this.Countrys);
+    }
+  }
 }

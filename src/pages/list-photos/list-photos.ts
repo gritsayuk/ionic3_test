@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ModalController,Modal } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import {AddHotelPage} from '../add-hotel/add-hotel'
 
 /**
  * Generated class for the ListHotelPage page.
@@ -11,33 +13,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @IonicPage()
 @Component({
   selector: 'page-list-hotel',
-  templateUrl: 'list-hotel.html',
+  templateUrl: 'list-photos.html',
 })
-export class ListHotelPage {
-  ListHotel:string[];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+export class ListPhotosPage {
+  ListPhoto:String [];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public modalCtrl: ModalController) {
     //this.ListPhoto = ['Египет','Украина'];
     //this.storage.set('ListPhoto', this.ListPhoto);
-    this.storage.get('ListHotel').then((val)=>{
-      this.ListHotel = val;
+    this.storage.get('ListPhoto').then((val)=>{
+      this.ListPhoto = val;
     })
   }
-  addHotel() {
+  addPhoto() {
     let modal: Modal = this.modalCtrl.create(AddHotelPage);
     //Откріваем модальное окно
     modal.present();
     //получаем список стран из модального окна
-    modal.onDidDismiss((data)=>{this.ListHotel =data;})
-
+    modal.onDidDismiss((data)=>{this.ListPhoto =data;})
   }
-
   itemSelected() {
     console.log('addPhoto()');
-  }
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ListHotelPage');
   }
 
 }
