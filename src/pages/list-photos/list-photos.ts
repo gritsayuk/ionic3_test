@@ -3,13 +3,6 @@ import { IonicPage, NavController, NavParams,ModalController,Modal } from 'ionic
 import { Storage } from '@ionic/storage';
 import {AddHotelPage} from '../add-hotel/add-hotel'
 
-/**
- * Generated class for the ListHotelPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-list-hotel',
