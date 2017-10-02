@@ -16,9 +16,9 @@
 
 <ion-content padding>
   <ion-list>
-    <div ion-item *ngFor="let item of Hotels">
+    <div ion-item *ngFor="let item of ListPhoto">
       <button  (click)="itemSelected(item)" icon-left>
-        {{ item }}
+        {{ item.Hotel }}
       </button>
       <button (click)="itemTrash(item)">
         <ion-icon name='trash' is-active="false" ></ion-icon>

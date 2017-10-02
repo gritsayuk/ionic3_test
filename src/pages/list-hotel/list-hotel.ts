@@ -8,13 +8,12 @@ import {AddItemPage} from '../add-item/add-item';
   selector: 'page-list-hotel',
   templateUrl: 'list-hotel.html',
 })
-//class Hotel {constructor(public Country:string,public Hotel:string);};
 export class ListHotelPage {
-  ListHotel:Hotel[];
+  ListHotel:JSON[];
   ThisCountry:string;
   constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage, public modalCtrl: ModalController) {
-    //this.ListPhoto = ['Египет','Украина'];
-    //this.storage.set('ListPhoto', this.ListPhoto);
+    this.ListPhoto = JSON.parse('[{"Country":"Украина","Hotel":"Тута"},{"Country":"Египет","Hotel":"Здеся"}]');
+    this.storage.set('ListPhoto', this.ListPhoto);
 
     this.storage.get('ListHotel').then((val)=>{
       this.ListHotel = val;
@@ -23,15 +22,15 @@ export class ListHotelPage {
   }
   addHotel() {
     let modal: Modal = this.modalCtrl.create(AddItemPage,{Title:'Отель'});
+    let NewHotel:JSON;
     //Откріваем модальное окно
     modal.present();
     //получаем список стран из модального окна
     modal.onDidDismiss((data)=>{
-      NewHotel : Hotel = new Hotel(this.ThisCountry,data);
+      NewHotel  = JSON.parse('{"Country":"'+this.ThisCountry+'","Hotel:"'+data+'"}');
       alert(NewHotel);
-      this.ListHotel = [];
+      //this.ListHotel = [];
       this.ListHotel.push(NewHotel);
-      alert(this.ListHotel);
     })
   }
 
