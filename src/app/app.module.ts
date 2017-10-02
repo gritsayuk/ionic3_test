@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListCountrysPage } from '../pages/list-countrys/list-countrys';
 import { AddCountryPage } from '../pages/add-country/add-country';
+import { AddItemPage } from '../pages/add-item/add-item';
 
 import { ListHotelPage } from '../pages/list-hotel/list-hotel';
 
@@ -25,6 +26,7 @@ import { IonicStorageModule } from '@ionic/storage';
 	  ListCountrysPage,
     AddCountryPage,
     ListHotelPage,
+    AddItemPage,
     ListPhotosPage,
     AddHotelPage
   ],
@@ -40,6 +42,7 @@ import { IonicStorageModule } from '@ionic/storage';
 	  ListCountrysPage,
     AddCountryPage,
     ListHotelPage,
+    AddItemPage,
     ListPhotosPage,
     AddHotelPage
   ],

@@ -1,12 +1,28 @@
 <ion-header>
-
   <ion-navbar>
-    <ion-title>ListHotel</ion-title>
-  </ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Отели</ion-title>
+    <ion-buttons end>
+      <button ion-button clear icon-only (click)=addHotel() >
+        <ion-icon name='add' is-active="false" ></ion-icon>
+      </button>
+    </ion-buttons>
 
+  </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-list>
+    <div ion-item *ngFor="let item of Hotels">
+      <button  (click)="itemSelected(item)" icon-left>
+        {{ item }}
+      </button>
+      <button (click)="itemTrash(item)">
+        <ion-icon name='trash' is-active="false" ></ion-icon>
+      </button>
+    </div>
+  </ion-list>
 </ion-content>

@@ -32,7 +32,9 @@ export class ListCountrysPage {
     //Откріваем модальное окно
     modal.present();
     //получаем список стран из модального окна
-    modal.onDidDismiss((data)=>{this.Countrys =data;})
+    modal.onDidDismiss((data)=> {
+        this.Countrys =data;
+    })
  }
   itemTrash(item){
     const index: number = this.Countrys.indexOf(item);
