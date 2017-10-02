@@ -55,11 +55,9 @@ export class AddHotelPage {
           }
           this.ListPhoto.push(item.name);
           this.storage.set('ListPhoto', this.ListPhoto);
-          this.view.dismiss(this.ListPhoto);
+          this.view.dismiss(item);
         }
         catch(e){alert(e.toString());}
-
-
       });
     }
   }
