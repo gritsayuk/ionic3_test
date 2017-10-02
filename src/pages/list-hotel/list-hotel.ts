@@ -12,8 +12,8 @@ export class ListHotelPage {
   ListHotel:JSON[];
   ThisCountry:string;
   constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage, public modalCtrl: ModalController) {
-    this.ListPhoto = JSON.parse('[{"Country":"Украина","Hotel":"Тута"},{"Country":"Египет","Hotel":"Здеся"}]');
-    this.storage.set('ListPhoto', this.ListPhoto);
+    this.ListHotel = JSON.parse('[{"Country":"Украина","Hotel":"Тута"},{"Country":"Египет","Hotel":"Здеся"}]');
+    this.storage.set('ListHotel', this.ListHotel);
 
     this.storage.get('ListHotel').then((val)=>{
       this.ListHotel = val;
@@ -25,12 +25,13 @@ export class ListHotelPage {
     let NewHotel:JSON;
     //Откріваем модальное окно
     modal.present();
+
     //получаем список стран из модального окна
     modal.onDidDismiss((data)=>{
-      NewHotel  = JSON.parse('{"Country":"'+this.ThisCountry+'","Hotel:"'+data+'"}');
-      alert(NewHotel);
-      //this.ListHotel = [];
+        //NewHotel  = JSON.parse('{"Country":"'+this.ThisCountry+'","Hotel:"'+data+'"}');
+      NewHotel  = JSON.parse('{"Country":"'+this.ThisCountry+'","Hotel":"'+data+'"}');
       this.ListHotel.push(NewHotel);
+      this.storage.set('ListHotel', this.ListHotel);
     })
   }
 
