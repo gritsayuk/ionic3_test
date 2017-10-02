@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{Title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-input type="text" placeholder={{Title}} [value]="NewItem" [(ngModel)]="NewItem"></ion-input>
+  </ion-item>
+  <div padding>
+    <button ion-button outline item-end (click)=AddItem()>
+      Добавить
+    </button>
+    <button ion-button outline item-end (click)=CloseModal()>
+      Отмена
+    </button>
+  </div>
+</ion-content>
