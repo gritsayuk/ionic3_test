@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ModalController,Modal  } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { AddCountryPage } from '../add-country/add-country';
-import {ListPhotosPage} from '../list-photos/list-photos'
 import { ListHotelPage } from '../list-hotel/list-hotel';
 
 @IonicPage()

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ModalController,Modal } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import {AddItemPage} from '../add-item/add-item';
+import {ListPhotosPage} from '../list-photos/list-photos'
+
 
 @IonicPage()
 @Component({
@@ -12,8 +14,8 @@ export class ListHotelPage {
   ListHotel:JSON[];
   ThisCountry:string;
   constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage, public modalCtrl: ModalController) {
-    this.ListHotel = JSON.parse('[{"Country":"Украина","Hotel":"Тута"},{"Country":"Египет","Hotel":"Здеся"}]');
-    this.storage.set('ListHotel', this.ListHotel);
+    //this.ListHotel = JSON.parse('[{"Country":"Украина","Hotel":"Тута"},{"Country":"Египет","Hotel":"Здеся"}]');
+    //this.storage.set('ListHotel', this.ListHotel);
 
     this.storage.get('ListHotel').then((val)=>{
       this.ListHotel = val;
@@ -30,13 +32,16 @@ export class ListHotelPage {
     modal.onDidDismiss((data)=>{
         //NewHotel  = JSON.parse('{"Country":"'+this.ThisCountry+'","Hotel:"'+data+'"}');
       NewHotel  = JSON.parse('{"Country":"'+this.ThisCountry+'","Hotel":"'+data+'"}');
+      if(!this.ListHotel) {
+        this.ListHotel = [];
+      }
       this.ListHotel.push(NewHotel);
       this.storage.set('ListHotel', this.ListHotel);
-    })
+    });
   }
 
-  itemSelected() {
-    console.log('addPhoto()');
+  itemSelected(item) {
+    this.navCtrl.push(ListPhotosPage,{Hotel : item, Country : this.ThisCountry});
   }
 
   ionViewDidLoad() {

@@ -10,10 +10,14 @@ import {AddHotelPage} from '../add-hotel/add-hotel'
 })
 export class ListPhotosPage {
   ListPhoto:JSON[];
+  ThisCountry:string;
+  ThisHotel:string;
   str:string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public modalCtrl: ModalController) {
-    this.ListPhoto = JSON.parse('[{"Country":"Египет","Hotel":"Придорожная","PhotoPath":"sss"},{"Country":"украина","Hotel":"Придорожная1","PhotoPath":"qqsss11"}]');
-    this.storage.set('ListPhoto', this.ListPhoto);
+    //this.ListPhoto = JSON.parse('[{"Country":"Египет","Hotel":"Придорожная","PhotoPath":"sss"},{"Country":"украина","Hotel":"Придорожная1","PhotoPath":"qqsss11"}]');
+    //this.storage.set('ListPhoto', this.ListPhoto);
+    this.ThisCountry = this.navParams.get("Country");
+    this.ThisHotel = this.navParams.get("Hotel");
     this.storage.get('ListPhoto').then((val)=>{
       this.ListPhoto = val;
     })
@@ -24,16 +28,20 @@ export class ListPhotosPage {
     //Откріваем модальное окно
     modal.present();
     //получаем список стран из модального окна
-    modal.onDidDismiss((data)=>{this.ListPhoto =data;
+    modal.onDidDismiss((data)=>{
+      //this.ListPhoto =data;
     //NewFile = JSON.parse('{"fullPath":"'+data.fullPath+'","name","'+data.name+'","nativeURL":"'+data.nativeURL+'","Hotel":"'+this.navParams.Hotel+'","Country":"'+this.navParams.Country+'"}');
       alert(data.fullPath);
-      alert(data.name);
-      alert(data.nativeURL);
-      NewFile = JSON.parse('{"fullPath":"'+data.fullPath+'","name","'+data.name+'","nativeURL":"'+data.nativeURL+'"}');
+      //NewFile = JSON.parse('{"Country":"'+this.ThisCountry+'","Hotel":"'+this.ThisHotel+'","fullPath":"'+data.fullPath+'","name","'+data.name+'","nativeURL":"'+data.nativeURL+'"}');
+      NewFile = JSON.parse('{"Country":"'+this.ThisCountry+'","Hotel":"'+this.ThisHotel+'","fullPath":"'+data.fullPath+'"}');
     //console.log(data);
       alert("1");
+    if(!this.ListPhoto) {
+      this.ListPhoto = [];
+    }
     this.ListPhoto.push(NewFile);
       alert("2");
+     this.storage.set('ListPhoto',NewFile);
     alert(JSON.stringify(this.ListPhoto));
     })
 

@@ -16,13 +16,15 @@
 
 <ion-content padding>
   <ion-list>
-    <div ion-item *ngFor="let item of ListHotel">
-      <button  (click)="itemSelected(item)" icon-left>
-        {{ item.Hotel }}
-      </button>
-      <button (click)="itemTrash(item)">
-        <ion-icon name='trash' is-active="false" ></ion-icon>
-      </button>
+    <div *ngFor="let item of ListHotel">
+      <div ion-item *ngIf = "item.Country === ThisCountry">
+        <button  class="item item-md" (click)="itemSelected(item)" icon-left>
+          {{ item.Hotel }}
+        </button>
+        <button  class="item item-md" (click)="itemTrash(item)">
+          <ion-icon name='trash' is-active="false" ></ion-icon>
+        </button>
+      </div>
     </div>
   </ion-list>
 </ion-content>

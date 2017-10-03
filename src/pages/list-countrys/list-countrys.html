@@ -23,10 +23,10 @@
 <ion-content padding>
   <ion-list>
       <div ion-item *ngFor="let item of Countrys">
-        <button  (click)="itemSelected(item)" icon-left>
+        <button class="item item-md" (click)="itemSelected(item)" icon-left>
           {{ item }}
         </button>
-        <button (click)="itemTrash(item)">
+        <button class="item item-md" (click)="itemTrash(item)">
           <ion-icon name='trash' is-active="false" ></ion-icon>
         </button>
       </div>

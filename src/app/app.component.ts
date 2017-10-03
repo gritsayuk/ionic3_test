@@ -15,7 +15,7 @@ import { ListPhotosPage } from '../pages/list-photos/list-photos';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = ListPhotosPage;
+  rootPage: any = ListCountrysPage;
 
   pages: Array<{title: string, component: any}>;
 
