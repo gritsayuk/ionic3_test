@@ -49,12 +49,12 @@ export class AddHotelPage {
     else {
       this.storage.get('ListPhoto').then((val)=> {
         try{
-          this.ListPhoto = val;
-          if(!this.ListPhoto) {
-            this.ListPhoto = [];
-          }
-          this.ListPhoto.push(item.name);
-          this.storage.set('ListPhoto', this.ListPhoto);
+          //this.ListPhoto = val;
+          //if(!this.ListPhoto) {
+          //  this.ListPhoto = [];
+          //}
+          //this.ListPhoto.push(item.name);
+          //this.storage.set('ListPhoto', this.ListPhoto);
           this.view.dismiss(item);
         }
         catch(e){alert(e.toString());}

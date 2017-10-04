@@ -25,7 +25,7 @@
     <div *ngFor="let item of ListPhoto">
       <div ion-item *ngIf = "item.Country === ThisCountry && item.Hotel === ThisHotel">
         <button class="item item-md" (click)="itemSelected(item)">
-          {{ item.PhotoPath }}
+          {{ item.fullPath }}
         </button>
       </div>
     </div>

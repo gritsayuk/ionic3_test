@@ -31,18 +31,26 @@ export class ListPhotosPage {
     modal.onDidDismiss((data)=>{
       //this.ListPhoto =data;
     //NewFile = JSON.parse('{"fullPath":"'+data.fullPath+'","name","'+data.name+'","nativeURL":"'+data.nativeURL+'","Hotel":"'+this.navParams.Hotel+'","Country":"'+this.navParams.Country+'"}');
-      alert(data.fullPath);
+      //alert(data.fullPath);
       //NewFile = JSON.parse('{"Country":"'+this.ThisCountry+'","Hotel":"'+this.ThisHotel+'","fullPath":"'+data.fullPath+'","name","'+data.name+'","nativeURL":"'+data.nativeURL+'"}');
       NewFile = JSON.parse('{"Country":"'+this.ThisCountry+'","Hotel":"'+this.ThisHotel+'","fullPath":"'+data.fullPath+'"}');
     //console.log(data);
-      alert("1");
+      //alert(NewFile);
     if(!this.ListPhoto) {
       this.ListPhoto = [];
     }
-    this.ListPhoto.push(NewFile);
-      alert("2");
-     this.storage.set('ListPhoto',NewFile);
-    alert(JSON.stringify(this.ListPhoto));
+      //alert(this.ListPhoto);
+     //this.storage.set('ListPhoto',NewFile);
+      //alert(JSON.stringify(this.ListPhoto));
+      try{
+        //this.ListPhoto = [];
+        this.ListPhoto.push(NewFile);
+        this.storage.set("ListPhoto",this.ListPhoto);
+        //alert(JSON.stringify(this.ListPhoto));
+      }
+
+      catch (e){
+        alert(e.toString());}
     })
 
   }

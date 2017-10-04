@@ -41,7 +41,7 @@ export class ListHotelPage {
   }
 
   itemSelected(item) {
-    this.navCtrl.push(ListPhotosPage,{Hotel : item, Country : this.ThisCountry});
+    this.navCtrl.push(ListPhotosPage,{"Hotel" : item.Hotel, "Country" : this.ThisCountry});
   }
 
   ionViewDidLoad() {
