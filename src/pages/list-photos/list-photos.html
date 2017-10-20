@@ -11,6 +11,10 @@
     </button>
     <ion-title>Фотографии</ion-title>
     <ion-buttons end>
+      <button   ion-button clear icon-only (click)=RunCamera() >
+        <ion-icon name='camera' ></ion-icon>
+      </button>
+
       <button   ion-button clear icon-only (click)=addPhoto() >
         <ion-icon name='add' is-active="false" ></ion-icon>
       </button>
@@ -22,12 +26,22 @@
 
 <ion-content padding>
   <ion-list>
+    <!--div *ngFor="let item of ListPhoto">
+      <ion-item  *ngIf = "item.Country === ThisCountry && item.Hotel === ThisHotel">
+        <ion-avatar item-start>
+          <img src={{item.fullPath}}>
+        </ion-avatar>
+        <h2>Woody</h2>
+        <p>This town ain't big enough for the two of us!</p>
+        <ion-note item-end>3:43 pm</ion-note>
+      </ion-item>
+    </div-->
     <div *ngFor="let item of ListPhoto">
-      <div ion-item *ngIf = "item.Country === ThisCountry && item.Hotel === ThisHotel">
-        <button class="item item-md" (click)="itemSelected(item)">
-          {{ item.fullPath }}
-        </button>
-      </div>
+      <ion-item  *ngIf = "item.Country === ThisCountry && item.Hotel === ThisHotel">
+          <img ng-src="{{item.fullPath}}">
+      </ion-item>
     </div>
+
   </ion-list>
+
 </ion-content>

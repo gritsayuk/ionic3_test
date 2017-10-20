@@ -40,25 +40,18 @@ export class AddHotelPage {
     if (Go) {
       this.file.listDir(Path, Dir)
         .then((val)=> {
-          this.ThisDirs = val;
+          this.ThisDirs =val.sort(function (a,b){
+            if(a.isDirectory < b.isDirectory){
+              return 1;
+            }
           })
+        })
         .catch((err)=> {
           alert(JSON.parse(err));
           });
     }
     else {
-      this.storage.get('ListPhoto').then((val)=> {
-        try{
-          //this.ListPhoto = val;
-          //if(!this.ListPhoto) {
-          //  this.ListPhoto = [];
-          //}
-          //this.ListPhoto.push(item.name);
-          //this.storage.set('ListPhoto', this.ListPhoto);
-          this.view.dismiss(item);
-        }
-        catch(e){alert(e.toString());}
-      });
+      this.view.dismiss(item);
     }
   }
   PreFolder(){
@@ -84,14 +77,16 @@ export class AddHotelPage {
         }
         console.log('Dir:'+Dir);
         console.log('Path:'+Path);
-        this.file.listDir(Path, Dir)
-          .then((val)=> {
-            this.ThisDirs = val;
-          })
-          .catch((err)=> {
-            alert(err.toString());
-          });
       }
+      this.file.listDir(Path, Dir)
+        .then((val)=> {
+          this.ThisDirs =val.sort(function (a,b){
+            if(a.isDirectory < b.isDirectory){
+              return 1;
+            }
+          })
+        })
+        .catch((err)=> {alert(err.toString());});
     }
     catch(e){alert(e.toString());}
   }

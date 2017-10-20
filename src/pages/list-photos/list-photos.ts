@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ModalController,Modal } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import {AddHotelPage} from '../add-hotel/add-hotel'
-
+import {Camera, CameraOptions} from '@ionic-native/camera';
+//import {Camera} from '@ionic-native/camera';
 @IonicPage()
 @Component({
   selector: 'page-list-hotel',
@@ -13,7 +14,7 @@ export class ListPhotosPage {
   ThisCountry:string;
   ThisHotel:string;
   str:string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public modalCtrl: ModalController,public camera: Camera) {
     //this.ListPhoto = JSON.parse('[{"Country":"Египет","Hotel":"Придорожная","PhotoPath":"sss"},{"Country":"украина","Hotel":"Придорожная1","PhotoPath":"qqsss11"}]');
     //this.storage.set('ListPhoto', this.ListPhoto);
     this.ThisCountry = this.navParams.get("Country");
@@ -29,24 +30,15 @@ export class ListPhotosPage {
     modal.present();
     //получаем список стран из модального окна
     modal.onDidDismiss((data)=>{
-      //this.ListPhoto =data;
-    //NewFile = JSON.parse('{"fullPath":"'+data.fullPath+'","name","'+data.name+'","nativeURL":"'+data.nativeURL+'","Hotel":"'+this.navParams.Hotel+'","Country":"'+this.navParams.Country+'"}');
-      //alert(data.fullPath);
-      //NewFile = JSON.parse('{"Country":"'+this.ThisCountry+'","Hotel":"'+this.ThisHotel+'","fullPath":"'+data.fullPath+'","name","'+data.name+'","nativeURL":"'+data.nativeURL+'"}');
-      NewFile = JSON.parse('{"Country":"'+this.ThisCountry+'","Hotel":"'+this.ThisHotel+'","fullPath":"'+data.fullPath+'"}');
-    //console.log(data);
-      //alert(NewFile);
+      //NewFile = JSON.parse('{"Country":"'+this.ThisCountry+'","Hotel":"'+this.ThisHotel+'","fullPath":"'+data.fullPath+'","name":"'+data.name+'","nativeURL":"'+data.nativeURL+'"}');
+      NewFile = JSON.parse('{"Country":"'+this.ThisCountry+'","Hotel":"'+this.ThisHotel+'","fullPath":"'+data.fullPath+'","name":"'+data.name+'","nativeURL":"'+data.nativeURL+'"}');
     if(!this.ListPhoto) {
       this.ListPhoto = [];
     }
-      //alert(this.ListPhoto);
-     //this.storage.set('ListPhoto',NewFile);
-      //alert(JSON.stringify(this.ListPhoto));
       try{
         //this.ListPhoto = [];
         this.ListPhoto.push(NewFile);
         this.storage.set("ListPhoto",this.ListPhoto);
-        //alert(JSON.stringify(this.ListPhoto));
       }
 
       catch (e){
@@ -57,5 +49,22 @@ export class ListPhotosPage {
   itemSelected() {
     console.log('addPhoto()');
   }
+  RunCamera(){
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.NATIVE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
 
+    this.camera.getPicture(options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64:
+      //let base64Image = 'data:image/jpeg;base64,' + imageData;
+      alert(imageData);
+      //alert(base64Image);
+    }, (err) => {
+      alert(JSON.stringify(err));
+    });
+  }
 }

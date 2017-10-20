@@ -16,6 +16,7 @@ import { AddHotelPage } from '../pages/add-hotel/add-hotel';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { File } from '@ionic-native/file';
+import {Camera} from '@ionic-native/camera';
 
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -50,6 +51,7 @@ import { IonicStorageModule } from '@ionic/storage';
     StatusBar,
     SplashScreen,
     File,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
